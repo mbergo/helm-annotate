@@ -1,0 +1,21 @@
+dist: trusty
+sudo: required
+language: go
+go: 1.9
+services:
+  - docker
+install:
+  - go build
+script:
+  - go get github.com/goreleaser/goreleaser
+  - test -n "$TRAVIS_TAG" || goreleaser --skip-validate --skip-publish --snapshot
+after_success:
+  - test -n "$TRAVIS_TAG" && goreleaser
+deploy:
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  target_branch: master
+  on:
+    master: true
+notifications:
+  email: false
