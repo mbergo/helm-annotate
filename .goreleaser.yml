@@ -1,0 +1,10 @@
+builds:
+  - binary: helm-annotate
+    goos:
+      - windows
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - arm64
+  
