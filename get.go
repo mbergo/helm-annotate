@@ -11,12 +11,9 @@ import (
 )
 
 type getCmd struct {
-	release      string
-	client       helm.Interface
-	timeout      int64
-	wait         bool
-	manifestType string
-	namespace    string
+	release   string
+	client    helm.Interface
+	namespace string
 }
 
 // newGetCmd allows getting annotations of kubernetes manifests
@@ -31,9 +28,6 @@ func newGetCmd() *cobra.Command {
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if len(args) != 1 {
 				return fmt.Errorf("This command neeeds 1 argument: release name")
-			}
-			if gc.manifestType == "" {
-				return fmt.Errorf("You have to select a manifest type")
 			}
 			gc.release = args[0]
 			gc.client = ensureHelmClient(gc.client)
@@ -52,7 +46,7 @@ func (e *getCmd) run() error {
 	}
 	values, err := chartutil.ReadValues([]byte(res.Release.Config.Raw))
 	if err != nil {
-		return errors.Wrap(err, "PB unable to de-serialize the release config to yaml")
+		return errors.Wrap(err, "unable to de-serialize the release config to yaml")
 	}
 	y := values.AsMap()
 	for k, v := range y {

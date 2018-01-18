@@ -2,6 +2,8 @@
 
 This is a Helm plugin to help chart developers to tag their releases
 
+[![Build Status](https://travis-ci.org/Tradeshift/helm-annotate.svg?branch=master)](https://travis-ci.org/Tradeshift/helm-annotate)
+
 ## Usage
 
 Tag releases with custom information, and retrieve them again.
