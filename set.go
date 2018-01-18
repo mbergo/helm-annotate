@@ -13,14 +13,11 @@ import (
 )
 
 type setCmd struct {
-	release      string
-	out          io.Writer
-	client       helm.Interface
-	timeout      int64
-	wait         bool
-	manifestType string
-	annotations  []string
-	namespace    string
+	release     string
+	out         io.Writer
+	client      helm.Interface
+	annotations []string
+	namespace   string
 }
 
 // newSetCmd allows adding annotation to kubernetes manifests
@@ -36,9 +33,6 @@ func newSetCmd() *cobra.Command {
 			if len(args) != 1 {
 				return fmt.Errorf("This command neeeds 1 argument: release name")
 			}
-			if edit.manifestType == "" {
-				return fmt.Errorf("You have to select a manifest type")
-			}
 			edit.release = args[0]
 			edit.client = ensureHelmClient(edit.client)
 
@@ -47,7 +41,7 @@ func newSetCmd() *cobra.Command {
 	}
 
 	f := cmd.Flags()
-	f.StringSliceVar(&edit.annotations, "annotations", nil, "list of annotations to add to the resource of type <type>")
+	f.StringSliceVar(&edit.annotations, "annotations", nil, "list of annotations to add to the release")
 	return cmd
 }
 

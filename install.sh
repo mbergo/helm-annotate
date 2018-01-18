@@ -8,7 +8,7 @@ elif  [[ $arch == arm* ]]; then
     cpu="arm64"
 fi
 
-HELM_ANNOTATE_VERSION=${HELM_ANNOTATE_VERSION:-"0.2"}
+HELM_ANNOTATE_VERSION=${HELM_ANNOTATE_VERSION:-"0.3"}
 dest_dir="${HELM_PLUGIN_DIR:-"$(helm home)/plugins/helm-annotate"}"
 file="${dest_dir}/helm-annotate.tar.gz"
 os=$(uname -s | tr '[:upper:]' '[:lower:]')
