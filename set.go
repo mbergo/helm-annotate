@@ -47,8 +47,6 @@ func newSetCmd() *cobra.Command {
 	}
 
 	f := cmd.Flags()
-	f.StringVar(&edit.manifestType, "type", "deployment", "Kubernetes type to annotate (deployment, service etc...)")
-	f.StringVar(&edit.namespace, "namespace", "default", "Kubernetes namespace to look for manifest type in")
 	f.StringSliceVar(&edit.annotations, "annotations", nil, "list of annotations to add to the resource of type <type>")
 	return cmd
 }

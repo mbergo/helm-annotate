@@ -25,7 +25,7 @@ func newGetCmd() *cobra.Command {
 	gc := &getCmd{}
 
 	cmd := &cobra.Command{
-		Use:     "get [flags] RELEASE",
+		Use:     "get RELEASE",
 		Short:   fmt.Sprintf("gets annotation on a release"),
 		PreRunE: setupConnection,
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -41,10 +41,6 @@ func newGetCmd() *cobra.Command {
 			return gc.run()
 		},
 	}
-
-	f := cmd.Flags()
-	f.StringVar(&gc.manifestType, "type", "deployment", "Kubernetes type to annotate (deployment, service etc...)")
-	f.StringVar(&gc.namespace, "namespace", "default", "Kubernetes namespace to look for manifest type in")
 	return cmd
 }
 
