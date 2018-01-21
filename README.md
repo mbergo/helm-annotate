@@ -4,6 +4,9 @@ This is a Helm plugin to help chart developers to tag their releases
 
 [![Build Status](https://travis-ci.org/Tradeshift/helm-annotate.svg?branch=master)](https://travis-ci.org/Tradeshift/helm-annotate)
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/Tradeshift/helm-annotate)](https://goreportcard.com/report/github.com/Tradeshift/helm-annotate)
+
+
 ## Usage
 
 Tag releases with custom information, and retrieve them again.
