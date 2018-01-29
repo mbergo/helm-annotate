@@ -42,7 +42,7 @@ func (e *getCmd) run() error {
 
 	res, err := e.client.ReleaseContent(e.release)
 	if err != nil {
-		return err
+		return errors.Wrap(err, "unable to get release contents")
 	}
 	values, err := chartutil.ReadValues([]byte(res.Release.Config.Raw))
 	if err != nil {
