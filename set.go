@@ -30,6 +30,11 @@ func newSetCmd() *cobra.Command {
 		Short:   fmt.Sprintf("sets annotation on a release"),
 		PreRunE: setupConnection,
 		RunE: func(cmd *cobra.Command, args []string) error {
+			fmt.Printf("There are %v arguments\n", len(args))
+			for i, v := range args {
+				fmt.Printf("The %vth arg is %v\n", i, v)
+			}
+
 			if len(args) != 1 {
 				return fmt.Errorf("This command neeeds 1 argument: release name")
 			}
